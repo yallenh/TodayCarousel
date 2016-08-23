@@ -21,7 +21,7 @@
 @property (nonatomic) CGFloat indicatorViewHeight;
 
 // private variables
-@property (nonatomic) CGFloat lastContentOffsetX;
+@property (nonatomic) NSUInteger currentIndex;
 
 // data source
 @property (nonatomic) NSArray *dataSource;
@@ -67,7 +67,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark setup
+#pragma mark private methods
 - (void)setUp
 {
     _imageViewMarginBottom = 50.f;
@@ -80,6 +80,7 @@
     _cardShadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] CGColor];
     _indicatorViewHeight = 30.f;
     _dataSource = @[];
+    _currentIndex = 0;
 }
 
 - (void)getDataSource
@@ -106,7 +107,6 @@
     CGFloat scrollViewWidth = todayWidth - 2 * self.scrollViewMarginX;
     CGFloat scrollViewHeight = todayHeight - self.indicatorViewHeight;
     NSUInteger numberOfCards = [self.dataSource count];
-    NSUInteger currentIndex = 0;
 
     // data source
     /*
@@ -126,11 +126,10 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.scrollViewMarginX, 0, scrollViewWidth, scrollViewHeight)];
         _scrollView.clipsToBounds = NO;
-        _scrollView.contentOffset = CGPointMake(scrollViewWidth * currentIndex, 0);
+        _scrollView.contentOffset = CGPointMake(scrollViewWidth * self.currentIndex, 0);
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
-        _lastContentOffsetX = _scrollView.contentOffset.x;
         [self.view addSubview:_scrollView];
     }
     _scrollView.contentSize = CGSizeMake(scrollViewWidth * numberOfCards, scrollViewHeight);
@@ -150,7 +149,7 @@
         layer.shouldRasterize = YES;
         layer.shadowRadius = _cardShadowRadius;
 
-        if (idx != currentIndex) {
+        if (idx != self.currentIndex) {
             card.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, self.cardUnFocusedScale);
         }
 
@@ -164,7 +163,14 @@
         [self.view addSubview:_pageControl];
     }
     _pageControl.numberOfPages = numberOfCards;
-    _pageControl.currentPage = currentIndex;
+    _pageControl.currentPage = self.currentIndex;
+}
+
+- (void)setCurrentIndex:(NSUInteger)currentIndex
+{
+    _currentIndex = currentIndex;
+    [self.pageControl setCurrentPage:self.currentIndex];
+    self.imageView.backgroundColor = [[self.dataSource objectAtIndex:self.currentIndex] objectForKey:@"img"];
 }
 
 #pragma mark UIScrollViewDelegate
@@ -196,20 +202,14 @@
                 percentage = 1.f - (percentage - 1.f);
             }
             if (percentage >= 0 && percentage <= 1.f) {
-                card.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.f, 0.2 * percentage + _cardUnFocusedScale);
+                card.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.f, (1.f - _cardUnFocusedScale) * percentage + _cardUnFocusedScale);
             }
         }
     }
 
-    [self.pageControl setCurrentPage:currentPage];
-    self.lastContentOffsetX = scrollView.contentOffset.x;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    CGFloat width = CGRectGetWidth(self.scrollView.frame);
-    NSInteger currentPage = ((self.scrollView.contentOffset.x - width / 2) / width) + 1;
-    self.imageView.backgroundColor = [[self.dataSource objectAtIndex:currentPage] objectForKey:@"img"];
+    if (currentPage != self.currentIndex) {
+        self.currentIndex = currentPage;
+    }
 }
 
 @end
