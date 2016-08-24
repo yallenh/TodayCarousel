@@ -7,6 +7,9 @@
 //
 
 #import "TodayCarouselController.h"
+#import "HRTodayCarouselCard.h"
+
+#define TODAYCAROUSEL_CARD_VERTICAL_SCROLLABLE
 
 @interface TodayCarouselController () <UIScrollViewDelegate>
 // constants
@@ -37,7 +40,7 @@
 
 @implementation TodayCarouselController
 
-#pragma mark Life Cycle
+#pragma mark Life Cycles
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -72,7 +75,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark private methods
+#pragma mark Private Methods
 - (void)setUp
 {
     _todayCarouselHeight = 300.f;
@@ -128,6 +131,15 @@
     }
     _imageView.backgroundColor = [[self.dataSource objectAtIndex:0] objectForKey:@"img"];
 
+    // page indicator view
+    if (!_pageControl) {
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.todayCarouselHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
+        _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+        [self.view addSubview:_pageControl];
+    }
+    _pageControl.numberOfPages = numberOfCards;
+    _pageControl.currentPage = self.currentIndex;
+
     // card view
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.scrollViewMarginX, 0, scrollViewWidth, scrollViewHeight)];
@@ -140,10 +152,27 @@
     }
     _scrollView.contentSize = CGSizeMake(scrollViewWidth * numberOfCards, scrollViewHeight);
 
-    [[_scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [[self.scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.dataSource enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        UIView *card = [[UIView alloc] initWithFrame:CGRectMake(scrollViewWidth * idx + _cardMargin, scrollViewHeight - _cardHeight, scrollViewWidth - 2 * _cardMargin, _cardHeight)];
-        card.backgroundColor = [UIColor whiteColor];
+        CGRect containerFrame = CGRectMake(scrollViewWidth * idx + _cardMargin, scrollViewHeight - _cardHeight, scrollViewWidth - 2 * _cardMargin, _cardHeight);
+        HRTodayCarouselCard *card = [[HRTodayCarouselCard alloc] init];
+
+#ifdef TODAYCAROUSEL_CARD_VERTICAL_SCROLLABLE
+        UIScrollView *verticalScrollContainer = [[UIScrollView alloc] initWithFrame:containerFrame];
+        verticalScrollContainer.alwaysBounceVertical = YES;
+        verticalScrollContainer.backgroundColor = [UIColor clearColor];
+        verticalScrollContainer.clipsToBounds = NO;
+
+        card.frame = CGRectMake(0, 0, CGRectGetWidth(verticalScrollContainer.frame), CGRectGetHeight(verticalScrollContainer.frame));
+        [verticalScrollContainer addSubview:card];
+        [_scrollView addSubview:verticalScrollContainer];
+#else
+        card.frame = containerFrame;
+        [_scrollView addSubview:card];
+#endif
+
+        card.categoryIcon.backgroundColor = [obj objectForKey:@"img"];
+        card.category.textColor = [obj objectForKey:@"img"];
 
         // shadow
         CALayer *layer = card.layer;
@@ -155,21 +184,11 @@
         layer.shouldRasterize = YES;
         layer.shadowRadius = _cardShadowRadius;
 
-        if (idx != self.currentIndex) {
-            card.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, self.cardUnFocusedScale);
+        // scale
+        if (idx != _currentIndex) {
+            [card setNeedsTransform:CGAffineTransformScale(CGAffineTransformIdentity, 1, self.cardUnFocusedScale)];
         }
-
-        [_scrollView addSubview:card];
     }];
-
-    // page indicator view
-    if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.todayCarouselHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
-        _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-        [self.view addSubview:_pageControl];
-    }
-    _pageControl.numberOfPages = numberOfCards;
-    _pageControl.currentPage = self.currentIndex;
 }
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex
@@ -203,6 +222,9 @@
             card = [cards objectAtIndex:currentPage + 1];
         }
         if (card) {
+#ifdef TODAYCAROUSEL_CARD_VERTICAL_SCROLLABLE
+            card = [[card subviews] objectAtIndex:0];
+#endif
             CGFloat percentage = percentageConstant - index;
             if (percentage > 1.f) {
                 percentage = 1.f - (percentage - 1.f);

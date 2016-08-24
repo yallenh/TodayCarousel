@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9187321D1D6D79A4003E17AB /* HRTodayCarouselCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187321C1D6D79A4003E17AB /* HRTodayCarouselCard.m */; };
+		918732241D6D7A70003E17AB /* HRTodayCarouselCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 918732231D6D7A70003E17AB /* HRTodayCarouselCard.xib */; };
 		91DB2C391D6AAD0E003A581E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C381D6AAD0E003A581E /* main.m */; };
 		91DB2C3C1D6AAD0E003A581E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C3B1D6AAD0E003A581E /* AppDelegate.m */; };
 		91DB2C3F1D6AAD0E003A581E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C3E1D6AAD0E003A581E /* ViewController.m */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9187321B1D6D79A4003E17AB /* HRTodayCarouselCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTodayCarouselCard.h; sourceTree = "<group>"; };
+		9187321C1D6D79A4003E17AB /* HRTodayCarouselCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTodayCarouselCard.m; sourceTree = "<group>"; };
+		918732231D6D7A70003E17AB /* HRTodayCarouselCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRTodayCarouselCard.xib; sourceTree = "<group>"; };
 		91DB2C341D6AAD0E003A581E /* TodayCarousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayCarousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DB2C381D6AAD0E003A581E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		91DB2C3A1D6AAD0E003A581E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9187321E1D6D79ED003E17AB /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				918732231D6D7A70003E17AB /* HRTodayCarouselCard.xib */,
+				9187321B1D6D79A4003E17AB /* HRTodayCarouselCard.h */,
+				9187321C1D6D79A4003E17AB /* HRTodayCarouselCard.m */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
 		91DB2C2B1D6AAD0E003A581E = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +125,7 @@
 				91DB2C3E1D6AAD0E003A581E /* ViewController.m */,
 				91DB2C6A1D6AF7A4003A581E /* TodayCarouselController.h */,
 				91DB2C6B1D6AF7A4003A581E /* TodayCarouselController.m */,
+				9187321E1D6D79ED003E17AB /* Cards */,
 				91DB2C401D6AAD0E003A581E /* Main.storyboard */,
 				91DB2C431D6AAD0E003A581E /* Assets.xcassets */,
 				91DB2C451D6AAD0E003A581E /* LaunchScreen.storyboard */,
@@ -254,6 +270,7 @@
 				91DB2C471D6AAD0E003A581E /* LaunchScreen.storyboard in Resources */,
 				91DB2C441D6AAD0E003A581E /* Assets.xcassets in Resources */,
 				91DB2C421D6AAD0E003A581E /* Main.storyboard in Resources */,
+				918732241D6D7A70003E17AB /* HRTodayCarouselCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91DB2C3F1D6AAD0E003A581E /* ViewController.m in Sources */,
+				9187321D1D6D79A4003E17AB /* HRTodayCarouselCard.m in Sources */,
 				91DB2C3C1D6AAD0E003A581E /* AppDelegate.m in Sources */,
 				91DB2C391D6AAD0E003A581E /* main.m in Sources */,
 				91DB2C6C1D6AF7A4003A581E /* TodayCarouselController.m in Sources */,
