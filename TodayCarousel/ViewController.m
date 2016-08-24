@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "TodayCarouselController.h"
+#import "HRTodayCarouselViewController.h"
 
 @interface ViewController ()
 @property (nonatomic) CGFloat yOffSet;
@@ -20,14 +20,14 @@
     self.view.backgroundColor = [UIColor grayColor];
     self.yOffSet = 100.f;
 
-    TodayCarouselController *tcController = [[TodayCarouselController alloc] init];
-    [self addChildViewController:tcController];
-    [tcController didMoveToParentViewController:self];
-    [self.view addSubview:tcController.view];
+    HRTodayCarouselViewController *tcVC = [[HRTodayCarouselViewController alloc] init];
+    [self addChildViewController:tcVC];
+    [tcVC didMoveToParentViewController:self];
+    [self.view addSubview:tcVC.view];
 
-    CGRect frame = tcController.view.frame;
+    CGRect frame = tcVC.view.frame;
     frame.origin = CGPointMake(0, self.yOffSet);
-    tcController.view.frame = frame;
+    tcVC.view.frame = frame;
 
     self.yOffSet += frame.size.height;
 }

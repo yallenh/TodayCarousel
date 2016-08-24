@@ -1,17 +1,17 @@
 //
-//  TodayCarouselController.m
+//  HRTodayCarouselViewController.m
 //  TodayCarousel
 //
-//  Created by Yan-Hsiang Huang on 8/22/16.
+//  Created by Yan-Hsiang Huang on 8/24/16.
 //  Copyright © 2016 Yahoo. All rights reserved.
 //
 
-#import "TodayCarouselController.h"
+#import "HRTodayCarouselViewController.h"
 #import "HRTodayCarouselCard.h"
 
 #define TODAYCAROUSEL_CARD_VERTICAL_SCROLLABLE
 
-@interface TodayCarouselController () <UIScrollViewDelegate>
+@interface HRTodayCarouselViewController () <UIScrollViewDelegate>
 // constants
 @property (nonatomic) CGFloat todayCarouselHeight;
 @property (nonatomic) CGFloat imageViewMarginBottom;
@@ -35,10 +35,9 @@
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UIPageControl *pageControl;
-
 @end
 
-@implementation TodayCarouselController
+@implementation HRTodayCarouselViewController
 
 #pragma mark Life Cycles
 - (instancetype)init
@@ -59,13 +58,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // resize
     CGRect frame = self.view.frame;
     frame.size = CGSizeMake(CGRectGetWidth(self.view.frame), self.todayCarouselHeight);
     self.view.frame = frame;
     self.view.backgroundColor = [UIColor clearColor];
-
+    
     // get data
     [self getDataSource];
 }
@@ -96,13 +95,13 @@
 - (void)getDataSource
 {
     _dataSource = @[
-        @{@"img": [UIColor redColor]},
-        @{@"img": [UIColor orangeColor]},
-        @{@"img": [UIColor yellowColor]},
-        @{@"img": [UIColor greenColor]},
-        @{@"img": [UIColor blueColor]},
-        @{@"img": [UIColor purpleColor]}
-    ];
+                    @{@"img": [UIColor redColor]},
+                    @{@"img": [UIColor orangeColor]},
+                    @{@"img": [UIColor yellowColor]},
+                    @{@"img": [UIColor greenColor]},
+                    @{@"img": [UIColor blueColor]},
+                    @{@"img": [UIColor purpleColor]}
+                    ];
     [self setUpTodayCarousel];
 }
 
@@ -111,26 +110,26 @@
     if (![self.dataSource count]) {
         return;
     }
-
+    
     CGFloat todayWidth = CGRectGetWidth(self.view.frame);
     CGFloat scrollViewWidth = todayWidth - 2 * self.scrollViewMarginX;
     CGFloat scrollViewHeight = self.todayCarouselHeight - self.indicatorViewHeight;
     NSUInteger numberOfCards = [self.dataSource count];
-
+    
     // data source
     /*
-    NSMutableArray *newDataSource = [NSMutableArray arrayWithArray:self.dataSource];
-    [newDataSource insertObject:[newDataSource lastObject] atIndex:0];
-    self.dataSource = newDataSource;
+     NSMutableArray *newDataSource = [NSMutableArray arrayWithArray:self.dataSource];
+     [newDataSource insertObject:[newDataSource lastObject] atIndex:0];
+     self.dataSource = newDataSource;
      */
-
+    
     // image view
     if (!_imageView) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, todayWidth, self.todayCarouselHeight - self.imageViewMarginBottom)];
         [self.view addSubview:_imageView];
     }
     _imageView.backgroundColor = [[self.dataSource objectAtIndex:0] objectForKey:@"img"];
-
+    
     // page indicator view
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.todayCarouselHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
@@ -139,7 +138,7 @@
     }
     _pageControl.numberOfPages = numberOfCards;
     _pageControl.currentPage = self.currentIndex;
-
+    
     // card view
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.scrollViewMarginX, 0, scrollViewWidth, scrollViewHeight)];
@@ -151,18 +150,18 @@
         [self.view addSubview:_scrollView];
     }
     _scrollView.contentSize = CGSizeMake(scrollViewWidth * numberOfCards, scrollViewHeight);
-
+    
     [[self.scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.dataSource enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CGRect containerFrame = CGRectMake(scrollViewWidth * idx + _cardMargin, scrollViewHeight - _cardHeight, scrollViewWidth - 2 * _cardMargin, _cardHeight);
         HRTodayCarouselCard *card = [[HRTodayCarouselCard alloc] init];
-
+        
 #ifdef TODAYCAROUSEL_CARD_VERTICAL_SCROLLABLE
         UIScrollView *verticalScrollContainer = [[UIScrollView alloc] initWithFrame:containerFrame];
         verticalScrollContainer.alwaysBounceVertical = YES;
         verticalScrollContainer.backgroundColor = [UIColor clearColor];
         verticalScrollContainer.clipsToBounds = NO;
-
+        
         card.frame = CGRectMake(0, 0, CGRectGetWidth(verticalScrollContainer.frame), CGRectGetHeight(verticalScrollContainer.frame));
         [verticalScrollContainer addSubview:card];
         [_scrollView addSubview:verticalScrollContainer];
@@ -170,10 +169,10 @@
         card.frame = containerFrame;
         [_scrollView addSubview:card];
 #endif
-
+        
         card.categoryIcon.backgroundColor = [obj objectForKey:@"img"];
         card.category.textColor = [obj objectForKey:@"img"];
-
+        
         // shadow
         CALayer *layer = card.layer;
         layer.cornerRadius = _cardCornerRadius;
@@ -183,7 +182,7 @@
         layer.rasterizationScale = [[UIScreen mainScreen] scale];
         layer.shouldRasterize = YES;
         layer.shadowRadius = _cardShadowRadius;
-
+        
         // scale
         if (idx != _currentIndex) {
             [card setNeedsTransform:CGAffineTransformScale(CGAffineTransformIdentity, 1, self.cardUnFocusedScale)];
@@ -203,13 +202,13 @@
 {
     CGFloat width = CGRectGetWidth(self.scrollView.frame);
     NSInteger currentPage = ((self.scrollView.contentOffset.x - width / 2.f) / width) + 1;
-
+    
     NSArray *cards = [self.scrollView subviews];
     NSUInteger total = [self.dataSource count];
     CGFloat percentageConstant = self.scrollView.contentOffset.x / width + 1.f;
     // NOTE: (allenh) percentageConstant is from:
     // ((self.scrollView.contentOffset.x + width) - inspectIndex * width) / width;
-
+    
     for (NSInteger index = currentPage - 1; index <= currentPage + 1; index++) {
         UIView *card = nil;
         if (index == currentPage - 1 && currentPage > 0) {
@@ -234,7 +233,7 @@
             }
         }
     }
-
+    
     if (currentPage != self.currentIndex) {
         self.currentIndex = currentPage;
     }
