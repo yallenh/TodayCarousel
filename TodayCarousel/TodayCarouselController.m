@@ -16,6 +16,7 @@
 @property (nonatomic) CGFloat cardHeight;
 @property (nonatomic) CGFloat cardMargin;
 @property (nonatomic) CGFloat cardCornerRadius;
+@property (nonatomic) CGSize cardShadowOffset;
 @property (nonatomic) CGFloat cardShadowRadius;
 @property (nonatomic) CGFloat cardUnFocusedScale;
 @property (nonatomic) CGColorRef cardShadowColor;
@@ -75,14 +76,15 @@
 - (void)setUp
 {
     _todayCarouselHeight = 300.f;
-    _imageViewMarginBottom = 50.f;
-    _scrollViewMarginX = 30.f;
-    _cardHeight = 150.f;
-    _cardMargin = 10.f;
-    _cardCornerRadius = 10.f;
-    _cardShadowRadius = 5.f;
+    _imageViewMarginBottom = 40.f;
+    _scrollViewMarginX = 22.f;
+    _cardHeight = 136.f;
+    _cardMargin = 5.f;
+    _cardCornerRadius = 1.5f;
+    _cardShadowOffset = CGSizeMake(0, 3.f);
+    _cardShadowRadius = 4.f;
     _cardUnFocusedScale = 0.8f;
-    _cardShadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] CGColor];
+    _cardShadowColor = [[UIColor colorWithWhite:0.0 alpha:0.1] CGColor];
     _indicatorViewHeight = 30.f;
     _dataSource = @[];
     _currentIndex = 0;
@@ -147,8 +149,8 @@
         CALayer *layer = card.layer;
         layer.cornerRadius = _cardCornerRadius;
         layer.shadowColor = _cardShadowColor;
-        layer.shadowOffset = CGSizeMake(0, _cardShadowRadius);
-        layer.shadowOpacity = 1;
+        layer.shadowOffset = _cardShadowOffset;
+        layer.shadowOpacity = 1.f;
         layer.rasterizationScale = [[UIScreen mainScreen] scale];
         layer.shouldRasterize = YES;
         layer.shadowRadius = _cardShadowRadius;
