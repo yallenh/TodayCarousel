@@ -96,6 +96,23 @@
 			name = Cards;
 			sourceTree = "<group>";
 		};
+		9187322B1D6DA342003E17AB /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				918732281D6D9F52003E17AB /* HRTodayCarouselViewController.h */,
+				918732291D6D9F52003E17AB /* HRTodayCarouselViewController.m */,
+				9187321E1D6D79ED003E17AB /* Cards */,
+			);
+			name = Carousel;
+			sourceTree = "<group>";
+		};
+		9187322C1D6DA379003E17AB /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Follow;
+			sourceTree = "<group>";
+		};
 		91DB2C2B1D6AAD0E003A581E = {
 			isa = PBXGroup;
 			children = (
@@ -123,9 +140,8 @@
 				91DB2C3B1D6AAD0E003A581E /* AppDelegate.m */,
 				91DB2C3D1D6AAD0E003A581E /* ViewController.h */,
 				91DB2C3E1D6AAD0E003A581E /* ViewController.m */,
-				918732281D6D9F52003E17AB /* HRTodayCarouselViewController.h */,
-				918732291D6D9F52003E17AB /* HRTodayCarouselViewController.m */,
-				9187321E1D6D79ED003E17AB /* Cards */,
+				9187322B1D6DA342003E17AB /* Carousel */,
+				9187322C1D6DA379003E17AB /* Follow */,
 				91DB2C401D6AAD0E003A581E /* Main.storyboard */,
 				91DB2C431D6AAD0E003A581E /* Assets.xcassets */,
 				91DB2C451D6AAD0E003A581E /* LaunchScreen.storyboard */,
