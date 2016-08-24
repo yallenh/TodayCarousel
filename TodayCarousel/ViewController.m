@@ -10,6 +10,7 @@
 #import "TodayCarouselController.h"
 
 @interface ViewController ()
+@property (nonatomic) CGFloat yOffSet;
 @end
 
 @implementation ViewController
@@ -17,19 +18,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
+    self.yOffSet = 100.f;
 
     TodayCarouselController *tcController = [[TodayCarouselController alloc] init];
-
     [self addChildViewController:tcController];
-
-    CGFloat headerHeight = 100.f;
-    CGFloat todayHeight = 300.f;
-    CGRect frame = CGRectMake(0, headerHeight, CGRectGetWidth(self.view.frame), todayHeight);
-    tcController.view.frame = frame;
-
+    [tcController didMoveToParentViewController:self];
     [self.view addSubview:tcController.view];
 
-    [tcController didMoveToParentViewController:self];
+    CGRect frame = tcController.view.frame;
+    frame.origin = CGPointMake(0, self.yOffSet);
+    tcController.view.frame = frame;
+
+    self.yOffSet += frame.size.height;
 }
 
 

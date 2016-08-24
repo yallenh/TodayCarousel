@@ -10,6 +10,7 @@
 
 @interface TodayCarouselController () <UIScrollViewDelegate>
 // constants
+@property (nonatomic) CGFloat todayCarouselHeight;
 @property (nonatomic) CGFloat imageViewMarginBottom;
 @property (nonatomic) CGFloat scrollViewMarginX;
 @property (nonatomic) CGFloat cardHeight;
@@ -55,10 +56,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // example
-    self.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 300.f);
+    // resize
+    CGRect frame = self.view.frame;
+    frame.size = CGSizeMake(CGRectGetWidth(self.view.frame), self.todayCarouselHeight);
+    self.view.frame = frame;
     self.view.backgroundColor = [UIColor clearColor];
 
+    // get data
     [self getDataSource];
 }
 
@@ -70,6 +74,7 @@
 #pragma mark private methods
 - (void)setUp
 {
+    _todayCarouselHeight = 300.f;
     _imageViewMarginBottom = 50.f;
     _scrollViewMarginX = 30.f;
     _cardHeight = 150.f;
@@ -103,9 +108,8 @@
     }
 
     CGFloat todayWidth = CGRectGetWidth(self.view.frame);
-    CGFloat todayHeight = CGRectGetHeight(self.view.frame);
     CGFloat scrollViewWidth = todayWidth - 2 * self.scrollViewMarginX;
-    CGFloat scrollViewHeight = todayHeight - self.indicatorViewHeight;
+    CGFloat scrollViewHeight = self.todayCarouselHeight - self.indicatorViewHeight;
     NSUInteger numberOfCards = [self.dataSource count];
 
     // data source
@@ -117,7 +121,7 @@
 
     // image view
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, todayWidth, todayHeight - self.imageViewMarginBottom)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, todayWidth, self.todayCarouselHeight - self.imageViewMarginBottom)];
         [self.view addSubview:_imageView];
     }
     _imageView.backgroundColor = [[self.dataSource objectAtIndex:0] objectForKey:@"img"];
@@ -158,7 +162,7 @@
 
     // page indicator view
     if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, todayHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.todayCarouselHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
         _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
         [self.view addSubview:_pageControl];
     }
