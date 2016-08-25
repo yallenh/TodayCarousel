@@ -10,6 +10,12 @@
 		9187321D1D6D79A4003E17AB /* HRTodayCarouselCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187321C1D6D79A4003E17AB /* HRTodayCarouselCard.m */; };
 		918732241D6D7A70003E17AB /* HRTodayCarouselCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 918732231D6D7A70003E17AB /* HRTodayCarouselCard.xib */; };
 		9187322A1D6D9F52003E17AB /* HRTodayCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918732291D6D9F52003E17AB /* HRTodayCarouselViewController.m */; };
+		918732331D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918732321D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.m */; };
+		918732371D6E95C2003E17AB /* HRHomeWidgetMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918732351D6E95C2003E17AB /* HRHomeWidgetMyViewController.m */; };
+		9187323A1D6E9C64003E17AB /* HRHomeWidgetMyWithoutFollow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 918732391D6E9C64003E17AB /* HRHomeWidgetMyWithoutFollow.xib */; };
+		9187323C1D6E9D4F003E17AB /* HRHomeWidgetMyWithFollow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9187323B1D6E9D4F003E17AB /* HRHomeWidgetMyWithFollow.xib */; };
+		918732401D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187323F1D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.m */; };
+		918732431D6ED993003E17AB /* HRHomeWidgetMyChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 918732421D6ED993003E17AB /* HRHomeWidgetMyChannelCell.xib */; };
 		91DB2C391D6AAD0E003A581E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C381D6AAD0E003A581E /* main.m */; };
 		91DB2C3C1D6AAD0E003A581E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C3B1D6AAD0E003A581E /* AppDelegate.m */; };
 		91DB2C3F1D6AAD0E003A581E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DB2C3E1D6AAD0E003A581E /* ViewController.m */; };
@@ -43,6 +49,15 @@
 		918732231D6D7A70003E17AB /* HRTodayCarouselCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRTodayCarouselCard.xib; sourceTree = "<group>"; };
 		918732281D6D9F52003E17AB /* HRTodayCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTodayCarouselViewController.h; sourceTree = "<group>"; };
 		918732291D6D9F52003E17AB /* HRTodayCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTodayCarouselViewController.m; sourceTree = "<group>"; };
+		918732311D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHomeWidgetBaseViewController.h; sourceTree = "<group>"; };
+		918732321D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHomeWidgetBaseViewController.m; sourceTree = "<group>"; };
+		918732341D6E95C2003E17AB /* HRHomeWidgetMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHomeWidgetMyViewController.h; sourceTree = "<group>"; };
+		918732351D6E95C2003E17AB /* HRHomeWidgetMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHomeWidgetMyViewController.m; sourceTree = "<group>"; };
+		918732391D6E9C64003E17AB /* HRHomeWidgetMyWithoutFollow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRHomeWidgetMyWithoutFollow.xib; sourceTree = "<group>"; };
+		9187323B1D6E9D4F003E17AB /* HRHomeWidgetMyWithFollow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRHomeWidgetMyWithFollow.xib; sourceTree = "<group>"; };
+		9187323E1D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHomeWidgetMyChannelCell.h; sourceTree = "<group>"; };
+		9187323F1D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHomeWidgetMyChannelCell.m; sourceTree = "<group>"; };
+		918732421D6ED993003E17AB /* HRHomeWidgetMyChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRHomeWidgetMyChannelCell.xib; sourceTree = "<group>"; };
 		91DB2C341D6AAD0E003A581E /* TodayCarousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayCarousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DB2C381D6AAD0E003A581E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		91DB2C3A1D6AAD0E003A581E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,8 +124,33 @@
 		9187322C1D6DA379003E17AB /* Follow */ = {
 			isa = PBXGroup;
 			children = (
+				918732341D6E95C2003E17AB /* HRHomeWidgetMyViewController.h */,
+				918732351D6E95C2003E17AB /* HRHomeWidgetMyViewController.m */,
+				918732391D6E9C64003E17AB /* HRHomeWidgetMyWithoutFollow.xib */,
+				9187323B1D6E9D4F003E17AB /* HRHomeWidgetMyWithFollow.xib */,
+				918732411D6ED97B003E17AB /* Cells */,
 			);
 			name = Follow;
+			sourceTree = "<group>";
+		};
+		918732301D6DA793003E17AB /* widgets */ = {
+			isa = PBXGroup;
+			children = (
+				918732311D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.h */,
+				918732321D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.m */,
+				9187322C1D6DA379003E17AB /* Follow */,
+			);
+			name = widgets;
+			sourceTree = "<group>";
+		};
+		918732411D6ED97B003E17AB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9187323E1D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.h */,
+				9187323F1D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.m */,
+				918732421D6ED993003E17AB /* HRHomeWidgetMyChannelCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		91DB2C2B1D6AAD0E003A581E = {
@@ -141,7 +181,7 @@
 				91DB2C3D1D6AAD0E003A581E /* ViewController.h */,
 				91DB2C3E1D6AAD0E003A581E /* ViewController.m */,
 				9187322B1D6DA342003E17AB /* Carousel */,
-				9187322C1D6DA379003E17AB /* Follow */,
+				918732301D6DA793003E17AB /* widgets */,
 				91DB2C401D6AAD0E003A581E /* Main.storyboard */,
 				91DB2C431D6AAD0E003A581E /* Assets.xcassets */,
 				91DB2C451D6AAD0E003A581E /* LaunchScreen.storyboard */,
@@ -283,8 +323,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918732431D6ED993003E17AB /* HRHomeWidgetMyChannelCell.xib in Resources */,
 				91DB2C471D6AAD0E003A581E /* LaunchScreen.storyboard in Resources */,
+				9187323C1D6E9D4F003E17AB /* HRHomeWidgetMyWithFollow.xib in Resources */,
 				91DB2C441D6AAD0E003A581E /* Assets.xcassets in Resources */,
+				9187323A1D6E9C64003E17AB /* HRHomeWidgetMyWithoutFollow.xib in Resources */,
 				91DB2C421D6AAD0E003A581E /* Main.storyboard in Resources */,
 				918732241D6D7A70003E17AB /* HRTodayCarouselCard.xib in Resources */,
 			);
@@ -311,8 +354,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918732371D6E95C2003E17AB /* HRHomeWidgetMyViewController.m in Sources */,
 				9187322A1D6D9F52003E17AB /* HRTodayCarouselViewController.m in Sources */,
 				91DB2C3F1D6AAD0E003A581E /* ViewController.m in Sources */,
+				918732331D6DA7FB003E17AB /* HRHomeWidgetBaseViewController.m in Sources */,
+				918732401D6ED94E003E17AB /* HRHomeWidgetMyChannelCell.m in Sources */,
 				9187321D1D6D79A4003E17AB /* HRTodayCarouselCard.m in Sources */,
 				91DB2C3C1D6AAD0E003A581E /* AppDelegate.m in Sources */,
 				91DB2C391D6AAD0E003A581E /* main.m in Sources */,

@@ -133,7 +133,8 @@
     // page indicator view
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.todayCarouselHeight - self.indicatorViewHeight, todayWidth, self.indicatorViewHeight)];
-        _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+        _pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:30.f / 255.f alpha:.3f];
+        _pageControl.currentPageIndicatorTintColor = [UIColor colorWithWhite:40.f / 255.f alpha:1.f];
         [self.view addSubview:_pageControl];
     }
     _pageControl.numberOfPages = numberOfCards;

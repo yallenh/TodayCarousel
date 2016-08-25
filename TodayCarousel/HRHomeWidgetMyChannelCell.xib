@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EGZ-5a-gOS" customClass="HRHomeWidgetMyChannelCell">
+            <rect key="frame" x="0.0" y="0.0" width="116" height="204"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="116" height="204"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opal" translatesAutoresizingMaskIntoConstraints="NO" id="awn-vz-OYm">
+                        <rect key="frame" x="18" y="20" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="iHZ-3D-zO8"/>
+                            <constraint firstAttribute="height" constant="80" id="ltc-LI-693"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXI-hE-d89">
+                        <rect key="frame" x="62" y="76" width="44" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="H6j-Rw-nbq"/>
+                            <constraint firstAttribute="width" constant="44" id="ieb-qD-1rB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="戲劇">
+                            <color key="titleColor" red="0.27450980392156865" green="0.30588235294117649" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佼心食堂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNx-ac-hJQ">
+                        <rect key="frame" x="8" y="112" width="100" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="UE5-lU-pGH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.14901960784313725" green="0.15686274509803921" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 6.4k 追蹤者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah2-hY-QxR">
+                        <rect key="frame" x="8" y="142" width="100" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="A6X-tq-kqM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.72549019607843135" green="0.74117647058823533" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpk-Z4-ScF">
+                        <rect key="frame" x="18" y="168" width="80" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="追蹤">
+                            <color key="titleColor" red="0.14901960784313725" green="0.15686274509803921" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ah2-hY-QxR" firstAttribute="leading" secondItem="EGZ-5a-gOS" secondAttribute="leading" constant="8" id="2hg-uH-go5"/>
+                <constraint firstItem="qpk-Z4-ScF" firstAttribute="top" secondItem="ah2-hY-QxR" secondAttribute="bottom" constant="12" id="7Gn-8I-FKK"/>
+                <constraint firstItem="qpk-Z4-ScF" firstAttribute="leading" secondItem="awn-vz-OYm" secondAttribute="leading" id="E7H-UB-bYA"/>
+                <constraint firstItem="awn-vz-OYm" firstAttribute="top" secondItem="EGZ-5a-gOS" secondAttribute="top" constant="20" id="KKx-y0-SD1"/>
+                <constraint firstItem="qpk-Z4-ScF" firstAttribute="trailing" secondItem="awn-vz-OYm" secondAttribute="trailing" id="Oet-kr-ifK"/>
+                <constraint firstAttribute="bottom" secondItem="qpk-Z4-ScF" secondAttribute="bottom" id="P3g-ZQ-Ksr"/>
+                <constraint firstAttribute="trailing" secondItem="CNx-ac-hJQ" secondAttribute="trailing" constant="8" id="SAN-ov-rGn"/>
+                <constraint firstItem="ah2-hY-QxR" firstAttribute="top" secondItem="CNx-ac-hJQ" secondAttribute="bottom" constant="12" id="Uhi-nQ-cTS"/>
+                <constraint firstAttribute="trailing" secondItem="ah2-hY-QxR" secondAttribute="trailing" constant="8" id="Xed-ru-qd7"/>
+                <constraint firstItem="awn-vz-OYm" firstAttribute="centerX" secondItem="EGZ-5a-gOS" secondAttribute="centerX" id="arN-4m-dgl"/>
+                <constraint firstItem="CNx-ac-hJQ" firstAttribute="top" secondItem="awn-vz-OYm" secondAttribute="bottom" constant="12" id="awk-Dx-eBS"/>
+                <constraint firstItem="gXI-hE-d89" firstAttribute="trailing" secondItem="awn-vz-OYm" secondAttribute="trailing" constant="8" id="eNl-Yb-fLU"/>
+                <constraint firstItem="CNx-ac-hJQ" firstAttribute="leading" secondItem="EGZ-5a-gOS" secondAttribute="leading" constant="8" id="q8l-tc-Q4Z"/>
+                <constraint firstItem="gXI-hE-d89" firstAttribute="bottom" secondItem="awn-vz-OYm" secondAttribute="bottom" constant="-4" id="ydz-nZ-xzK"/>
+            </constraints>
+            <connections>
+                <outlet property="channelCategory" destination="gXI-hE-d89" id="8je-IX-haZ"/>
+                <outlet property="channelFollows" destination="ah2-hY-QxR" id="Ls7-JI-EdQ"/>
+                <outlet property="channelName" destination="CNx-ac-hJQ" id="XYi-mE-Wtr"/>
+                <outlet property="followButton" destination="qpk-Z4-ScF" id="5i7-Mp-Nyw"/>
+                <outlet property="thumbnail" destination="awn-vz-OYm" id="Joz-ZI-Vfc"/>
+            </connections>
+            <point key="canvasLocation" x="561" y="297"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="opal" width="75" height="75"/>
+    </resources>
+</document>
