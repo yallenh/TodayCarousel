@@ -10,9 +10,11 @@
 #import "HRTodayCarouselViewController.h"
 #import "HRHomeWidgetMyViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
 @property (nonatomic) UIScrollView *scrollView;
-@property (nonatomic) CGFloat yOffSet;
+@property (nonatomic) CGFloat yOffset;
+@property (nonatomic) BOOL scrollViewShouldShowMore;
+@property (nonatomic) CGFloat yOffsetShowMore;
 @property (nonatomic) NSMutableArray *moduleViewQueue;
 @end
 
@@ -24,6 +26,7 @@
 
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+        self.scrollViewShouldShowMore = NO;
         [self.view addSubview:_scrollView];
     }
     if (!_moduleViewQueue) {
@@ -36,12 +39,19 @@
     [self addModule:[[HRTodayCarouselViewController alloc] init] withBottomSpacing:10.f];
     [self addModule:[[HRHomeWidgetBaseViewController alloc] init] withBottomSpacing:20.f];
     [self addModule:[[HRHomeWidgetMyViewController alloc] init] withBottomSpacing:20.f];
+
+    // show more modules
     [self addModule:[[HRHomeWidgetBaseViewController alloc] init] withBottomSpacing:20.f];
+    self.yOffsetShowMore = self.yOffset;
+    self.yOffset -= 320.f;
+
 
     [[[self.moduleViewQueue reverseObjectEnumerator] allObjects] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         [_scrollView addSubview:view];
     }];
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), self.yOffSet);
+
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), self.yOffset);
 }
 
 - (void)addModule:(UIViewController *)vc withBottomSpacing:(CGFloat)bottomSpacing
@@ -52,12 +62,33 @@
         [self.moduleViewQueue addObject:vc.view];
 
         CGRect frame = vc.view.frame;
-        frame.origin = CGPointMake(frame.origin.x, self.yOffSet);
+        frame.origin = CGPointMake(frame.origin.x, self.yOffset);
         vc.view.frame = frame;
 
-        self.yOffSet = CGRectGetMaxY(frame);
+        self.yOffset = CGRectGetMaxY(frame);
     }
-    self.yOffSet += bottomSpacing;
+    self.yOffset += bottomSpacing;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.scrollView.contentOffset.y + self.scrollView.frame.size.height >= self.yOffset) {
+        self.scrollViewShouldShowMore = YES;
+    }
+    else {
+        self.scrollViewShouldShowMore = NO;
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width, self.yOffset);
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (self.scrollViewShouldShowMore) {
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width, self.yOffsetShowMore);
+    }
+    else {
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.contentSize.width, self.yOffset);
+    }
 }
 
 @end
